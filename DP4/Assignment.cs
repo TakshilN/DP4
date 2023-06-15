@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Threading.Channels;
 
 namespace DP4
 {
@@ -324,12 +325,285 @@ namespace DP4
     }
 }
 
+
+namespace DP4
+{
+    internal class Swap
+    {
+        static void Main(string[] args)
+        {
+            //Swap values of two integer variables using third variable
+
+            int a = 5;
+            int b = 10;
+            int c;
+
+            Console.WriteLine("Before Swaping");
+
+            Console.WriteLine("Value of a is" + a);
+
+            Console.WriteLine("Value of b is" + b);
+
+            c = a;
+            a = b;
+            b = c;
+
+            Console.WriteLine("After Swaping");
+
+            Console.WriteLine("value of a is" + a);
+
+            Console.WriteLine("value of b is" + b);
+
+        }
+    }
+}
+
+
+namespace DP4
+{
+    internal class Swap2
+    {
+        static void Main(string[] args)
+        {
+            //Swap values of two integer variables without using a third variable.
+
+            int a = 5;
+            int b = 10;
+
+            Console.WriteLine("Before Swaping");
+
+            Console.WriteLine("Value of a is" + a);
+
+            Console.WriteLine("Value of b is" + b);
+
+            a = a + b;
+            b = a - b;
+            a = a - b;
+
+            Console.WriteLine("After Swaping");
+
+            Console.WriteLine("value of a is" + a);
+
+            Console.WriteLine("value of b is" + b);
+
+        }
+    }
+}
+
+namespace DP4
+{
+    internal class Marks_Grade
+    {
+        static void Main(string[] args)
+        {
+            /*Accept marks of 3 subjects physics ,chemistry , maths out of 100. Calculate percentage.
+             Display grade as below.
+             Percentage > 80% - Grade A
+             Percentage > 70% - Grade B
+             Percentage > 60% - Grade C
+             Percentage < 60% - Grade D*/
+
+         
+            int r, marks1, marks2, marks3, total;
+
+            float percentage;
+            string n;
+
+            Console.WriteLine("Enter Student Roll Number :");
+            r = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Enter Student Name :");
+            n = Console.ReadLine();
+
+            Console.WriteLine("Enter Subject-1 Marks : ");
+            marks1 = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Enter Subject-2 Marks : ");
+            marks2 = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Enter Subject-3 Marks :");
+            marks3 = Convert.ToInt32(Console.ReadLine());
+
+            total = marks1 + marks2 + marks3;
+
+            percentage = total / 3.0f;
+
+            Console.WriteLine("Final result of {0} is:", n);
+            Console.WriteLine("Total Marks : " + total);
+            Console.WriteLine("Percentage : " + percentage);
+
+            if (percentage >= 80)
+            {
+                Console.WriteLine("Grade is A");
+            }
+            else if (percentage >= 70 && percentage <= 79)
+            {
+                Console.WriteLine("Grade is B");
+            }
+            else if (percentage >= 60 && percentage <= 69)
+            {
+                Console.WriteLine("Grade is C");
+            }
+            else if (percentage <= 60)
+            {
+                Console.WriteLine("Grade is D");
+            }
+        }
+    }
+}
+
+namespace DP4
+{
+    internal class Vowel_OrNot
+    {
+        //WAP to accept a character from user & check whether it is vowel or not (using switch)
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter a Alphabet");
+            char ch = Convert.ToChar(Console.ReadLine().ToLower());
+            switch (ch)
+            {
+                case 'a':
+                    Console.WriteLine("It is vowel");
+                    break;
+                case 'i':
+                    Console.WriteLine("It is vowel");
+                    break;
+                case 'o':
+                    Console.WriteLine("It is vowel");
+                    break;
+                case 'u':
+                    Console.WriteLine("It is vowel");
+                    break;
+                case 'e':
+                    Console.WriteLine("It is vowel");
+                    break;
+                default:
+                    Console.WriteLine("It Is Not Vowel");
+                    break;
+            }
+        }
+    }
+}
+
+namespace DP4
+{
+    internal class Vowel_OrNot2
+    {
+        static void Main(string[] args)
+        {
+            //WAP to accept a character from user & check whether it is vowel or not
+
+            char ch;
+
+            Console.WriteLine("Input a symbol: ");
+            ch = Convert.ToChar(Console.ReadLine());
+
+            if ((ch == 'a') || (ch == 'e') || (ch == 'i') ||
+                    (ch == 'o') || (ch == 'u'))
+            {
+                Console.WriteLine("It's Lowercase Vowel.");
+            }
+            else if ((ch == 'A') || (ch == 'E') || (ch == 'I') ||
+                    (ch == 'O') || (ch == 'U'))
+            {
+                Console.WriteLine("It's Uppercase Vowel");
+            }
+            else
+            {
+                Console.Write("It's Not Vowel");
+            }
+            
+        }
+    }
+}
+
+namespace DP4
+{
+    internal class Posi_Neg_Zero
+    {
+        static void Main(string[] args)
+        {
+            //WAP to accept a number from the user & check number is +ve or -ve or zero.
+
+            int n1;
+
+            Console.WriteLine("Accept number:");
+            n1 = Convert.ToInt32(Console.ReadLine());
+            if (n1 >+ 0)
+            {
+                Console.WriteLine(n1 + " is +ve number");
+            }
+            else if (n1 <- 0)
+            {
+                Console.WriteLine(n1 + " is -ve number");
+            }
+            else
+            {
+                Console.WriteLine(n1 + " is zero");
+            }
+        }
+    }
+}
+
+namespace DP4
+{
+    internal class MaxNum_Logical
+    {
+        static void Main(string[] args)
+
+        { 
+            //Write a C# program to find maximum between three numbers (using logical operator)
+
+
+            int[] num = { 56, 23, 10 };
+            int MaxNum = num.Max();
+
+            Console.WriteLine($"The Maximum Number is {MaxNum}");
+        }
+    }
+}
+
+namespace DP4
+{
+    internal class CharDigitSpecial
+    {
+        static void Main(string[] args)
+        {
+            //    Write a C# program to input any character and check whether it is alphabet, digit or special character 
+
+            char ch;
+
+            Console.WriteLine("Enter any character");
+            ch = Convert.ToChar(Console.ReadLine());
+
+            if ((ch >= 'a' && ch >= 'z') || (ch >= 'A' && ch >= 'Z'))
+            {
+                Console.WriteLine($"{ch} is character");
+            }
+            else if (ch >= 0 && ch <= 9)
+            {
+                Console.WriteLine($"{ch} is digit");
+            }
+            else
+            {
+                Console.WriteLine($"{ch} is special character");
+            }
+        }
+    }
+}
+
 namespace DP4
 {
     internal class BillUnit
     {
         static void Main(string[] args)
         {
+            /* Write a C# program to input electricity consumption unit and calculate total electricity bill according to the given condition: 
+            For first 50 units Rs. 0.50 / unit For next 100 units Rs. 0.75 / unit For next 100 units Rs. 1.20 / unit For unit above 250 Rs. 1.50 /
+            unit An additional surcharge of 20 % is added to the bill*/
+
             double unit;
             double amt, total, surcharges;
             Console.WriteLine("Enter Total Units Consumed : ");
@@ -356,77 +630,5 @@ namespace DP4
 
 namespace DP4
 {
-    internal class MaxNum
-    {
-        static void Main(string[] args)
-        {
-            //Write a C# program to find maximum between three numbers(using logical operator)
 
-            //int n1, n2, n3;
-            //Console.WriteLine("Enter your no.");
-            //n1 = Convert.ToInt32(Console.ReadLine());
-            //Console.WriteLine("Enter your no.");
-            //n2 = Convert.ToInt32(Console.ReadLine());
-            //Console.WriteLine("Enter your no.");
-            //n3 = Convert.ToInt32(Console.ReadLine());
-
-            //Console.WriteLine($"greater number is {n2}" || $"greater number is {n3}");
-        }
-    }
-}
-
-namespace DP4
-{
-    internal class CharDigitSpecial
-    {
-        static void Main(string[] args)
-        {
-            char ch;
-
-            Console.WriteLine("Enter any character");
-            ch = Convert.ToChar(Console.ReadLine());
-
-            if ((ch >= 'a' && ch >= 'z') || (ch >= 'A' && ch >= 'Z'))
-            {
-                Console.WriteLine($"{ch} is character");
-            }
-            else if (ch >= 0 && ch <= 9)
-            {
-                Console.WriteLine($"{ch} is digit");
-            }
-            else
-            {
-                Console.WriteLine($"{ch} is special character");
-            }
-        }
-    }
-}
-
-namespace DP4
-{
-    internal class Swap
-    {
-        static void Main(string[] args)
-        {
-            int a = 5;
-            int b = 10;
-            int c;
-
-            Console.WriteLine("Before Swaping");
-
-            Console.WriteLine("Value of a is" + a);
-
-            Console.WriteLine("Value of b is" + b);
-
-            c = a;
-            a = b;
-            b = c;
-
-            Console.WriteLine("before swaping");
-
-            Console.WriteLine("value of a is" + a);
-
-            Console.WriteLine("value of b is" + b);
-        }
-    }
 }

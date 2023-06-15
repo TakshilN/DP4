@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -200,23 +201,37 @@ namespace DP4
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine("Enter Your Number");
-            //int num = Convert.ToInt32(Console.ReadLine());
-            //string res = (num % 2 == 0) ? "even" : "odd";
+            Console.WriteLine("Enter Your Number");
+            int num = Convert.ToInt32(Console.ReadLine());
+            string res = (num % 2 == 0) ? "even" : "odd";
+
+            Console.WriteLine(res);
+
+            Console.WriteLine("enter your number");
+            int num1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter your number");
+            int num2 = Convert.ToInt32(Console.ReadLine());
            
-            //Console.WriteLine(res);
+            string res1 = (num1 % 2 == 0) ? "even" : "odd";
+            string res2 = (num2 % 2 == 1) ? "odd" : "even";
 
-            //Console.WriteLine("enter your number");
-            //int num1= Convert.ToInt32(Console.ReadLine());
-            //Console.WriteLine("enter your number");
-            //int num2= Convert.ToInt32(Console.ReadLine());
-            //int res = num1 % 2;
-            //int res == 0 ? "even" : "odd";
-            //string res1 =(num1 % 2 == 0) ? "even" : "odd";
-            //string res2 = (num2 % 2 == 1) ? "odd" : "even";
-            //Console.WriteLine(res1);
-            //Console.WriteLine(res2);
+            Console.WriteLine(res1);
+            Console.WriteLine(res2);
 
+        }
+    }
+}
+
+namespace DP4
+{
+    class HelloWorld
+    {
+        public void print()
+        {
+            int[] num = { 1, 2, 3, };
+            int MaxNum = num.Max();
+
+            Console.WriteLine(MaxNum);
         }
     }
 }
