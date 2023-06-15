@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DP4
+﻿namespace DP4
 {
     internal class Homework1
     {
@@ -575,6 +567,338 @@ namespace DP4
             {
                 Console.WriteLine(i);
                 i++;
+            }
+        }
+    }
+}
+
+namespace DP4
+{
+    internal class Patern
+    {
+        static void Main(string[] args)
+        {
+            for (int i = 1; i <= 5; i++)
+            {
+                for (int j = 1; j <= i; j++)
+                {
+                    Console.Write("* ");
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+
+namespace DP4
+{
+    internal class Patern2
+    {
+        static void Main(string[] args)
+        {
+            for (int i = 1; i <= 5; i++)
+            {
+                for (int j = 5; j >= i; j--)
+                {
+                    Console.Write(j);
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+
+namespace DP4
+{
+    internal class Pater3
+    {
+        static void Main(string[] args)
+        {
+            for (int i = 1; i <= 5; i++)
+            {
+                for (int j = 1; j <= i; j++)
+                {
+                    Console.Write(j);
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+
+namespace DP4
+{
+    internal class Patern4
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter Row");
+            int row = Convert.ToInt32 (Console.ReadLine());
+            for (int i = 1 ; i <= row; i++)
+            {
+                for (int j = 0; j <= row; j++)
+                {
+                    if (i == 1 || j == i)
+                    {
+                        Console.Write(" * ");
+                    }
+                    else if (i <= row || j <= row)
+                    {
+                        Console.WriteLine(" 1 ");
+                    }
+                    else
+                    {
+                        Console.WriteLine(" ");
+                    }
+                }
+            }
+        }
+    }
+}
+
+namespace DP4
+{
+    internal class Patern5
+    {
+        static void Main(string[] args)
+        {
+            for (int row = 8; row >= 1; --row)
+            {
+                for (int col = 1; col <= row; ++col)
+                {
+                    Console.Write("*");
+                }
+
+                Console.WriteLine();
+            }
+        }
+    }
+}
+
+namespace DP4
+{
+    internal class Patern6
+    {
+        static void Main(string[] args)
+        {
+            for (int row = 1; row <= 8; ++row)
+            {
+                for (int col = 1; col <= row; ++col)
+                {
+                    Console.Write("*");
+                }
+
+                Console.WriteLine();
+            }
+        }
+    }
+}
+
+namespace DP4
+{
+    internal class Patern7
+    {
+        static void Main(string[] args)
+        {
+            int number, i, k, count = 1;
+            Console.Write("Enter number of rows\n");
+            number = int.Parse(Console.ReadLine());
+            count = number - 1;
+            for (k = 1; k <= number; k++)
+            {
+                for (i = 1; i <= count; i++)
+                    Console.Write(" ");
+                count--;
+                for (i = 1; i <= 2 * k - 1; i++)
+                    Console.Write("*");
+                Console.WriteLine();
+            }
+            count = 1;
+            for (k = 1; k <= number - 1; k++)
+            {
+                for (i = 1; i <= count; i++)
+                    Console.Write(" ");
+                count++;
+                for (i = 1; i <= 2 * (number - k) - 1; i++)
+                    Console.Write("*");
+                Console.WriteLine();
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+namespace DP4
+{
+    internal class Patern9
+    {
+        static void Main(string[] args)
+        {
+            int val = 8;
+            int i, j, k;
+            for (i = 1; i <= val; i++)
+            {
+                for (j = 1; j <= val - i; j++)
+                {
+                    Console.Write(" ");
+                }
+                for (k = 1; k <= i; k++)
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine("");
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+namespace DP4
+{
+    internal class Patern10
+    {
+        static void Main(string[] args)
+        {
+            int number = 8;
+
+            for (int i = 0; i < number; ++i)
+            {
+                for (int j = 0; j <= i; ++j)
+                {
+                    Console.Write("*");
+                }
+
+                if (i != number - 1)
+                {
+                    Console.Write(" ");
+                }
+                else
+                {
+                    Console.Write(" * ");
+                }
+                for (int j = 0; j <= i; ++j)
+                {
+                    Console.Write("*");
+                }
+
+                Console.WriteLine();
+            }
+        }
+    }
+}
+
+namespace DP4
+{
+    internal class Patern11
+    {
+        static void Main(string[] args)
+        {
+            int number = 7;
+
+            for (int i = 0; i < number; i++)
+            {
+                if (i == 0 || i == 6)
+                {
+                    for (int j = 0; j < number; j++)
+                    {
+                        Console.Write("*");
+                    }
+                    Console.WriteLine();
+                }
+                if (i >= 1 && i <= 5)
+                {
+                    for (int j = 0; j < number; j++)
+                    {
+                        if (j == 0 || j == 6)
+                        {
+                            Console.Write("*");
+                        }
+                        else if (j >= 1 && j <= 5)
+                        {
+                            Console.Write(" ");
+                        }
+                    }
+                    Console.WriteLine();
+                }
+            }
+        }
+    }
+}
+
+namespace DP4
+{
+    internal class Patern12
+    {
+        static void stars(int count)
+        {
+            for (int i = 0; i < count; ++i)
+                Console.Write("*");
+        }
+
+        static void spaces(int count)
+        {
+            for (int i = 0; i < count; ++i)
+                Console.Write(" ");
+        }
+        static void Main(string[] args)
+        {
+
+            int n = 8;
+
+            for (int i = 0; i < n; ++i)
+            {
+                stars(i + 1);
+                spaces(n - i - 1);
+                stars(n - i + 1);
+                spaces(2 * i);
+                stars(n - i);
+                spaces(n - i - 1);
+                stars(i + 1);
+
+                Console.WriteLine();
+            }
+        }
+    }
+}
+
+namespace DP4
+{
+    internal class RHalf_Pyra
+    {
+        static void Main(string[] args)
+        {
+            int rows = 5;
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j <= i; j++)
+                {
+                    Console.Write("* ");
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+
+namespace DP4
+{
+    internal class LHalf_Pyra   
+    {
+        static void Main(string[] args)
+        {
+            // first loop is for printing the rows
+            int rows = 5;
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < 2 * (rows - i) - 1; j++)
+                {
+                    Console.Write(" ");
+                }
+                for (int k = 0; k <= i; k++)
+                {
+                    Console.Write("* ");
+                }
+                Console.WriteLine();
             }
         }
     }

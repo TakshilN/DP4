@@ -289,7 +289,7 @@ namespace DP4
             num = Convert.ToInt32(Console.ReadLine());
 
             tem = num;
-            while (num > 0)
+            while (num != 0)
             {
                 rem = num % 10;
                 sum = sum + (rem * rem * rem);
@@ -297,11 +297,11 @@ namespace DP4
             }
             if (tem == sum)
             {
-                Console.WriteLine(tem + " Is A Armstrong Number");
+                Console.WriteLine(" Is A Armstrong Number");
             }
             else
             {
-                Console.WriteLine(tem + " Is Not A Armstrong Number");
+                Console.WriteLine(" Is Not A Armstrong Number");
             }
         }
     }
@@ -400,9 +400,9 @@ namespace DP4
     {
         static void Main(string[] args)
         {
-            int num, rem,  rev = 0;
+            int  rem,  rev = 0;
             Console.WriteLine("Enter a Number : ");
-            num = Convert.ToInt32(Console.ReadLine());
+            int num = Convert.ToInt32(Console.ReadLine());
             while (num != 0)
             {
                 rem = num % 10;
