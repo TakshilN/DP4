@@ -257,21 +257,13 @@ namespace DP4
             Console.WriteLine("Enter Number");
             num = Convert.ToInt32(Console.ReadLine());
 
-            if (num == 0 || num == 1)
+            if (num % 2 == 0)
             {
-                Console.WriteLine($"{num} is not prime number");
+                Console.WriteLine(num+ "is Not Prime Number");
             }
             else
             {
-                for (int i = 2; i <= num / 2; i++)
-                {
-                    if (num % i == 0)
-                    {
-                        Console.WriteLine($"{num} is not prime number");
-                    }
-                }
-                Console.WriteLine($"{num} is prime number");
-                
+                Console.WriteLine(num + "is Prime Number");
             }
         }
     }
@@ -329,7 +321,7 @@ namespace DP4
             }
             if (res == sum)
             {
-                Console.WriteLine($"Number {res} is Palindrome.");
+                Console.WriteLine(+res+ " is Palindrome.");
             }
             else
             {
@@ -361,7 +353,7 @@ namespace DP4
                 for (int i = 2; i < numberOfElements; i++)
                 {
                     sum = num1 + num2;
-                    Console.WriteLine(sum + " ");
+                    Console.Write(sum + " ");
                     num1 = num2;
                     num2 = sum;
                 }
@@ -431,6 +423,260 @@ namespace DP4
                 fact = fact * i;
             }
             Console.WriteLine($"Factorial of {num}  is: {fact}");
+        }
+    }
+}
+
+namespace DP4
+{
+    class Book
+    {
+        public string Title { get; set; }
+        public string Author { get; set; }
+        public int Page { get; set; }
+
+        public Book(string title_in, string author_in, int page_in)
+        {
+            this.Title = title_in;
+            this.Author = author_in;
+            this.Page = page_in;
+        }
+
+        public override string ToString()
+        {
+            return $"\nTitle: {Title}\nAuthor: {Author}\nPage: {Page}\n\n";
+        }
+    }
+
+    class Display
+    {
+        public static void ShowBookList(List<Book> list)
+        {
+            Console.Clear();
+            foreach (Book book in list)
+            {
+                Console.WriteLine($" {list.IndexOf(book) + 1}. book");
+                Console.WriteLine("---------");
+                Console.WriteLine(book);
+            }
+        }
+
+        public static void Options(List<Book> list)
+        {
+            do
+            {
+                if (BookList.empty)
+                {
+                    Console.Clear();
+                    Console.WriteLine("\nThe list is now empty.\n");
+                }
+                Console.WriteLine("Write \"+\" if you want to add a book to the list.\n");
+                Console.WriteLine("Write \"-\" if you want to remove a book from the list.\n");
+                Console.WriteLine("Write \"*\" if you want to edit a book info in the list.\n");
+                Console.Write("Write \"q\" if you want to close the application. --> ");
+                BookList.option = Console.ReadLine();
+            } while (BookList.option != "+" && BookList.option != "q" && BookList.option != "-" && BookList.option != "*");
+
+            switch (BookList.option)
+            {
+                case "+":
+                    Display.AskForHowManyBooks();
+                    BookList.AddBook(list, ref BookList.howMany, BookList.bookNumber, BookList.bookTitle, BookList.bookAuthor, BookList.bookPage);
+                    BookList.empty = false;
+                    break;
+
+                case "q":
+                    Console.WriteLine("\nOkay then, good bye.");
+                    Environment.Exit(0);
+                    break;
+
+                case "-":
+                    Console.Clear();
+                    Console.Write("Which book do you want to remove from the list? [Write the number of the book] --> ");
+                    do
+                    {
+                        BookList.number_ok = int.TryParse(Console.ReadLine(), out BookList.bookNumber);
+                    } while (!BookList.number_ok);
+                    if ((BookList.bookNumber <= list.Count) && (list.ElementAtOrDefault(BookList.bookNumber - 1) != null))
+                    {
+                        Console.WriteLine(BookList.books[BookList.bookNumber - 1]);
+                        do
+                        {
+                            Console.Write("Are you sure you want to remove this book from the list? [Y/N] --> ");
+                            BookList.confirmRemove = Console.ReadLine().ToUpper();
+                        } while (BookList.confirmRemove != "Y" && BookList.confirmRemove != "N");
+                        switch (BookList.confirmRemove)
+                        {
+                            case "Y":
+                                BookList.RemoveBook(list, BookList.bookNumber - 1);
+                                break;
+                            case "N":
+                                Display.ShowBookList(list);
+                                Display.Options(list);
+                                break;
+                        }
+                    }
+                    if ((list != null) && (!list.Any()))
+                    {
+                        BookList.empty = true;
+                        Display.Options(list);
+                    }
+                    break;
+
+                case "*":
+                    Console.Clear();
+                    Console.Write("Select the book [Write the number of the book] --> ");
+                    do
+                    {
+                        BookList.number_ok = int.TryParse(Console.ReadLine(), out BookList.bookNumber);
+                    } while (!BookList.number_ok);
+                    if ((BookList.bookNumber <= list.Count) && (list.ElementAtOrDefault(BookList.bookNumber - 1) != null))
+                    {
+                        Console.Write(BookList.books[BookList.bookNumber - 1]);
+                        Book bookUpdated = BookList.BookInfo(BookList.bookNumber - 1, BookList.bookTitle, BookList.bookAuthor, BookList.bookPage);
+                        BookList.books[BookList.bookNumber - 1] = bookUpdated;
+                    }
+                    break;
+            }
+        }
+
+        public static void AskForHowManyBooks()
+        {
+            do
+            {
+                Console.Clear();
+                Console.Write("How many books do you want to add to the list? --> ");
+                BookList.size_ok = BookList.HowManyBooks(Console.ReadLine(), ref BookList.howMany, BookList.MAX_SIZE);
+            } while (!BookList.size_ok);
+        }
+
+        public static void AskForBookTitle(int bookNumber_in)
+        {
+
+            Console.Write($"\n{bookNumber_in + 1}. book - What is the title? --> ");
+        }
+
+        public static void AskForBookAuthor(int bookNumber_in)
+        {
+
+            Console.Write($"{bookNumber_in + 1}. book - Who wrote the book? --> ");
+        }
+
+        public static void AskForBookPage(int bookNumber_in)
+        {
+
+            Console.Write($"{bookNumber_in + 1}. book - How many pages does the book have? --> ");
+        }
+    }
+
+    static class BookList
+    {
+        public const int MAX_SIZE = 100;
+        public static string option;
+        public static string confirmRemove;
+        public static int bookNumber;
+        public static string bookTitle;
+        public static string bookAuthor;
+        public static int bookPage;
+        public static bool page_ok;
+        public static bool size_ok;
+        public static bool number_ok;
+        public static int howMany;
+        public static bool empty = BookList.IsListEmpty(books);
+        public static List<Book> books = new List<Book>();
+
+        public static bool IsListEmpty(List<Book> list)
+        {
+            if ((list != null) && (!list.Any()))
+            {
+                return false;
+            }
+
+            return true;
+        }
+        public static bool HowManyBooks(string size_in, ref int howMany_in, int max)
+        {
+            return int.TryParse(size_in, out howMany_in) && (howMany_in >= 0 && howMany_in <= max);
+        }
+
+        public static string GetBookTitle(string bookTitle_in)
+        {
+            do
+            {
+                bookTitle_in = Console.ReadLine();
+            } while (string.IsNullOrEmpty(bookTitle_in));
+
+            return bookTitle_in;
+        }
+
+        public static string GetBookAuthor(string bookAuthor_in)
+        {
+            do
+            {
+                bookAuthor_in = Console.ReadLine();
+            } while (string.IsNullOrEmpty(bookAuthor_in));
+
+            return bookAuthor_in;
+        }
+
+        public static int GetBookPage(int bookPage_in, bool? page_ok_in)
+        {
+            do
+            {
+                page_ok_in = int.TryParse(Console.ReadLine(), out bookPage_in);
+            } while (page_ok_in == false);
+
+            return bookPage_in;
+        }
+
+        public static Book BookInfo(int bookNumber_in, string bookTitle_in, string bookAuthor_in, int bookPage_in)
+        {
+            Book book_in;
+            bool? page_ok_in = null;
+
+            Display.AskForBookTitle(bookNumber_in);
+            bookTitle_in = BookList.GetBookTitle(bookTitle_in);
+
+            Display.AskForBookAuthor(bookNumber_in);
+            bookAuthor_in = BookList.GetBookAuthor(bookAuthor_in);
+
+            Display.AskForBookPage(bookNumber_in);
+            bookPage_in = BookList.GetBookPage(bookPage_in, page_ok_in);
+
+            book_in = new Book(bookTitle_in, bookAuthor_in, bookPage_in);
+
+            return book_in;
+        }
+
+        public static void AddBook(List<Book> list, ref int howMany_in, int bookNumber_in, string bookTitle_in, string bookAuthor_in, int bookPage_in)
+        {
+            for (bookNumber_in = 0; bookNumber_in < howMany_in; ++bookNumber_in)
+            {
+                Book book = BookList.BookInfo(bookNumber_in, bookTitle_in, bookAuthor_in, bookPage_in);
+                list.Add(book);
+            }
+        }
+
+        public static void RemoveBook(List<Book> list, int bookNumber_in)
+        {
+            list.RemoveAt(bookNumber_in);
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            while (BookList.empty)
+            {
+                Display.Options(BookList.books);
+            }
+
+            while (!BookList.empty)
+            {
+                Display.ShowBookList(BookList.books);
+                Display.Options(BookList.books);
+            }
         }
     }
 }
