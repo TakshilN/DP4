@@ -904,3 +904,87 @@ namespace DP4
     }
 }
 
+namespace DP4
+{
+    internal class Full_Pyra
+    {
+        static void Main(string[] args)
+        {
+            int rows = 5;
+
+            // first loop to print all rows
+            for (int i = 0; i < rows; i++)
+            {
+
+                // inner loop 1 to print white spaces
+                for (int j = 0; j < 2 * (rows - i) - 1; j++)
+                {
+                    Console.Write(" ");
+                }
+
+                // inner loop 2 to print star * character
+                for (int k = 0; k < 2 * i + 1; k++)
+                {
+                    Console.Write("* ");
+                }
+                Console.Write("\n");
+            }
+        }
+    }
+}
+
+namespace DP4
+{
+    internal class Invert_Half
+    {
+        static void Main(string[] args)
+        {
+            int rows = 5;
+
+            // first loop to print all rows
+            for (int i = 0; i < rows; i++)
+            {
+
+                // first inner loop to print the * in each row
+                for (int j = 0; j < rows - i; j++)
+                {
+                    Console.Write("* ");
+                }
+                Console.Write("\n");
+            }
+
+        }
+    }
+}
+
+
+namespace DP4
+{
+    internal class Invert_Full
+    {
+        static void Main(string[] args)
+        {
+            int rows = 5;
+
+            // first loop for printing all rows
+            for (int i = 0; i < rows; i++)
+            {
+
+                // first inner loop for printing leading white
+                // spaces
+                for (int j = 0; j < 2 * i; j++)
+                {
+                    Console.Write(" ");
+                }
+
+                // second inner loop for printing stars *
+                for (int k = 0; k < 2 * (rows - i) - 1; k++)
+                {
+                    Console.Write("* ");
+                }
+                Console.Write("\n");
+            }
+
+        }
+    }
+}
