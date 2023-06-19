@@ -1,4 +1,7 @@
-﻿namespace DP4
+﻿using DP4;
+using System.Runtime.CompilerServices;
+
+namespace DP4
 {
     internal class Homework1
     {
@@ -989,3 +992,47 @@ namespace DP4
     }
 }
 
+
+namespace DP4
+{
+    public class Product
+    {
+
+        private int Producode;
+        private int Produprice;
+        private string? Produname;
+
+        public string Name
+        {
+            set { Produname = value; }
+            get { return Produname; }
+        }
+        public int Code
+        {
+            set { Producode = value; }
+            get { return Producode; }
+        }
+        public int Price
+        {
+            set { Produprice = value; }
+            get { return  Produprice; }
+        }
+        public string PrintDet()
+        {
+            return $"Product detail is {Produname} , {Producode} , {Produprice}";
+        }
+    }
+}
+
+public class Product_detail
+{
+    static void Main(string[] args)
+    {
+        Product product = new Product();
+        product.Name = "Mobile";
+        product.Code = 12;
+        product.Price = 20;
+
+        Console.WriteLine($"Product detail is {product.Name} , {product.Code} , {product.Price}");
+    }
+}
