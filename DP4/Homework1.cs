@@ -1036,3 +1036,81 @@ public class Product_detail
         Console.WriteLine($"Product detail is {product.Name} , {product.Code} , {product.Price}");
     }
 }
+
+
+class project
+{
+    public class Employee
+    {
+        protected int id;
+        protected string name;
+        protected double bs, hra, ta, da, pf, gross;
+        private static int count;
+        public Employee(string name, double bs)
+        {
+            count++;
+            id = count;
+            this.name = name;
+            this.bs = bs;
+        }
+        // to allow method to be overriden we use virtual keyword
+        public virtual void CalculateSalary()
+        {
+            hra = bs * 0.40;
+            ta = bs * 0.20;
+            da = bs * 0.15;
+            pf = bs * 0.12;
+            gross = (bs + hra + ta + da) - pf;
+        }
+        //public string PrintEmpSalary()
+        //{
+        //    return $"id={id}, name={name}, gross ={gross}";
+        //}
+        //ToString()  --> from base class object
+        public override string ToString()
+        {
+            return $"id={id}, name={name}, gross ={gross}";
+        }
+    }
+
+    public class Ceo : Employee
+    {
+        private double comm;
+        // first always it calls to base class constructor
+        // base keyword is used to call the base class members (constructor,method,protected members)
+
+        public Ceo (string name, double bs, double comm) : base(name, bs) //parametric constructor
+        {
+            this.comm = comm;
+
+        }
+        // method which is sam in base class should override the implementation
+        public override void CalculateSalary()
+        {
+            hra = bs * 0.40;
+            ta = bs * 0.20;
+            da = bs * 0.15;
+            pf = bs * 0.12;
+            gross = (bs + hra + ta + da + comm) - pf;
+        }
+        // ToString() --> gives the string representation of an object
+        public override string ToString()
+        {
+            return $"id={id}, name={name}, gross ={gross}";
+        }
+    }
+
+
+    static void Main(string[] args) // method
+    {
+        Ceo ceo  = new Ceo("Rohan", 97800, 3500);
+        ceo .CalculateSalary();
+        Console.WriteLine(ceo);// ToString() get called implicitly 
+
+        Employee employee = new Employee("Suraj", 23000);
+        employee.CalculateSalary();
+        Console.WriteLine(employee);
+    }
+
+}
+
