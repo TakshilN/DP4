@@ -1114,3 +1114,167 @@ class project
 
 }
 
+class Prime
+{
+    static void Main(string[] args)
+    {
+        int num1;
+
+        num1 = Convert.ToInt32(Console.ReadLine());
+        if (num1 == 0 || num1 == 1)
+        {
+            Console.WriteLine("Not Prime");
+        }
+        else
+        {
+            for (int a = 2; a <= num1 / 2; a++)
+            {
+                if (num1 % a == 0)
+                {
+                    Console.WriteLine("Not Prime");
+                    return;
+                }
+
+            }
+            Console.WriteLine("Prime");
+        }
+
+    }
+}
+
+class project2
+{
+    public class Employee
+    {
+        protected int id;
+        protected string name;
+        protected double bs, hra, ta, pf, gross;
+        private static int count;
+        public Employee(string name, double bs)
+        {
+            count++;
+            id = count;
+            this.name = name;
+            this.bs = bs;
+        }
+        // to allow method to be overriden we use virtual keyword
+        public virtual void CalculateSalary()
+        {
+            hra = bs * 0.40;
+            ta = bs * 0.20;
+            pf = bs * 0.12;
+            gross = (bs + hra) - pf;
+        }
+        //public string PrintEmpSalary()
+        //{
+        //    return $"id={id}, name={name}, gross ={gross}";
+        //}
+        //ToString()  --> from base class object
+        public override string ToString()
+        {
+            return $"id={id}, name={name}, gross ={gross}";
+        }
+    }
+
+    public class Employee1 : Employee
+    {
+        private double comm;
+        // first always it calls to base class constructor
+        // base keyword is used to call the base class members (constructor,method,protected members)
+
+        public Employee1 (string name, double bs, double comm) : base(name, bs) //parametric constructor
+        {
+            this.comm = comm;
+
+        }
+        // method which is sam in base class should override the implementation
+        public override void CalculateSalary()
+        {
+            hra = bs * 0.40;
+            ta = bs * 0.20;
+            pf = bs * 0.12;
+            gross = (bs + hra + ta + comm) - pf;
+        }
+        // ToString() --> gives the string representation of an object
+        public override string ToString()
+        {
+            return $"id={id}, name={name}, gross ={gross}";
+        }
+    }
+
+
+    static void Main(string[] args) // method
+    {
+        //Ceo ceo = new Ceo("Rohan", 97800, 3500);
+        //ceo.CalculateSalary();
+        //Console.WriteLine(ceo);// ToString() get called implicitly 
+
+        Employee employee = new Employee("Suraj", 23000);
+        employee.CalculateSalary();
+        Console.WriteLine(employee);
+    }
+
+}
+
+namespace DP4
+{
+    public class Array
+    {
+        static void Main(string[] args)
+        {
+            int[,] arr = new int[3, 3];
+
+            for (int i = 0; i < arr.GetLength(0); i++)
+            {
+                for (int j = 0; j < arr.GetLength(1); j++)
+                {
+                    Console.WriteLine($"Enter value for arr[{i},{j}]");
+                    arr[i, j] = Convert.ToInt32(Console.ReadLine());
+                }
+            }
+
+            int[,] arr2 = new int[3, 3];
+
+            for (int i = 0; i < arr2.GetLength(0); i++)
+            {
+                for (int j = 0; j < arr2.GetLength(1); j++)
+                {
+                    Console.WriteLine($"Enter value for arr[{i},{j}]");
+                    arr2[i, j] = Convert.ToInt32(Console.ReadLine());
+                }
+            }
+
+            Console.WriteLine("------1st Matrix------");
+            for (int i = 0; i < arr.GetLength(0); i++)
+            {
+                for (int j = 0; j < arr.GetLength(1); j++)
+                {
+                    Console.Write(arr[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("------2nd Matrix------");
+            for (int i = 0; i < arr2.GetLength(0); i++)
+            {
+                for (int j = 0; j < arr2.GetLength(1); j++)
+                {
+                    Console.Write(arr2[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("------Addition of 2 Matrix------");
+            for (int i = 0; i < arr.GetLength(0); i++)
+            {
+                for (int j = 0; j < arr.GetLength(1); j++)
+                {
+                    Console.Write(arr[i, j] + arr2 [i, j] +" ");
+                }
+                Console.WriteLine();
+            }
+
+        }
+
+    }
+}

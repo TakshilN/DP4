@@ -680,3 +680,32 @@ namespace DP4
         }
     }
 }
+
+class Poli
+{
+    static void Main(string[] args)
+    {
+        int number;
+  
+        number = Convert.ToInt32(Console.ReadLine());
+        int remineder, sum = 0;
+        int res = number;
+        while (number > 0)
+        {
+
+            remineder = number % 10;
+
+            sum = (sum * 10) + remineder;
+
+            number = number / 10;
+        }
+        if (res == sum)
+        {
+            Console.WriteLine(" is Palindrome.");
+        }
+        else
+        {
+            Console.WriteLine ("is not Palindrome");
+        }
+    }
+}
