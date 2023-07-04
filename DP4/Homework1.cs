@@ -1,4 +1,5 @@
 ﻿using DP4;
+using System.Collections;
 using System.Runtime.CompilerServices;
 
 namespace DP4
@@ -1218,7 +1219,7 @@ class project2
 
 namespace DP4
 {
-    public class Array
+    public class Array1
     {
         static void Main(string[] args)
         {
@@ -1274,6 +1275,165 @@ namespace DP4
                 Console.WriteLine();
             }
 
+        }
+
+    }
+}
+
+namespace DP4
+{
+    public class Array3
+    {
+        static void Main(string[] args)
+        {
+            ArrayList list = new ArrayList();
+
+            list.Add(10); // boxing
+            list.Add("Hello");
+            list.Add(77.77);
+
+            string s = list[1].ToString();
+            int a = (int)list[0]; // unboxing
+            Console.WriteLine(a);
+
+            double d = (double)list[2];
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+    }
+}
+
+namespace DP4
+{
+    public class Array4
+    {
+        static void Main(string[] args)
+        {
+            int[] arr = new int[] { 10, 20, 30, 40, 50, 60 };
+            int[] arr2 = new int[8];
+            ArrayList list = new ArrayList();
+
+            list.Add(11);
+            list.Add(33);
+            list.Add(77);
+
+            list.Insert(0, 1);
+            list.Insert(2, 200);
+
+            list.AddRange(arr);
+
+            list.Remove("Hello");
+            list.RemoveAt(0);
+            list.RemoveRange(1, 3);
+            list.RemoveAt(0);
+
+            list.Sort();
+            //list.Reverse();
+
+            list.CopyTo(arr2);
+
+            bool res = list.Contains(250);
+            Console.WriteLine(res);
+
+            Console.WriteLine("No of elements present in the collection " + list.Count);
+
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+    }
+}
+
+
+namespace DP4
+{
+    public class Lifo
+    {
+        static void Main(string[] args)
+        {
+
+            // LIFO (Last in first out)
+
+            Stack stack = new Stack();
+            // Push, Pop, Peek
+
+            stack.Push(100);
+            stack.Push(101);
+            stack.Push(102);
+            stack.Push(103);
+
+            stack.Pop(); //removes the top element in the collections
+
+            Console.WriteLine($"Top element in the stack {stack.Peek()}");
+
+            foreach (var item in stack)
+            {
+                Console.WriteLine(item);
+            }
+
+        }
+    }
+}
+
+namespace DP4
+{
+    public class Queue1
+    {
+
+        static void Main(string[] args)
+        {
+            // Queue --> FIFO (first in first out)
+            Queue queue = new Queue();
+            queue.Enqueue(101);
+            queue.Enqueue(202);
+            queue.Enqueue(303);
+
+            queue.Dequeue();//remove the first element- 10
+
+            Console.WriteLine($"first element in the list {queue.Peek()}");
+            Console.WriteLine($"total elements in the queue {queue.Count}");
+
+            foreach (var item in queue)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+
+    }
+}
+
+namespace DP4
+{
+    public class HashTable
+    {
+        static void Main(string[] args)
+        {
+            Hashtable hashtable = new Hashtable();
+            hashtable.Add("Takshil" , 91861577777);
+            hashtable.Add("Rohan", 917765258322);
+            hashtable.Add("Rohit" , 917763536512);
+
+            //hashtable.Remove(63);
+
+            foreach (DictionaryEntry item in hashtable)
+            {
+                Console.WriteLine(item.Key + "  " + item.Value);
+            }
+
+            Console.WriteLine("After Remove");
+
+            hashtable.Remove("Rohit");
+
+            foreach (DictionaryEntry item in hashtable)
+            {
+                Console.WriteLine(item.Key + "  " +item.Value);
+            }
         }
 
     }

@@ -1,4 +1,6 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using DP4;
+using System.Collections;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Channels;
 
 namespace DP4
@@ -628,7 +630,280 @@ namespace DP4
     }
 }
 
-namespace DP4
+//4.Create class Student, with roll no , name , percentage auto implemented properties. Use property initialize syntax to assign the values. Print the student details
+//7.Create Student class with roll no, name, accept 3 subjects marks from constructor.Calculate the total marks & percentage.Display student details using ToString()
+
+public class Student_Details
 {
+    private int Maths, Chemistry, Physics;
+    private double Total, Percent;
+    public int Roll_no { get; set; }
+    public string Name { get; set; }
+    public double Percentage { get; set; }
+
+    public string PrintSD()
+    {
+        return $" Student name is {Name}\nRoll numbre is {Roll_no}\n Percentage is {Percentage}";
+    }
+
+    public Student_Details(int Maths, int Chemistry, int Physics)
+    {
+        this.Maths = Maths;
+        this.Chemistry = Chemistry;
+        this.Physics = Physics;
+    }
+    public void Calculate()
+    {
+        Total = Maths + Chemistry + Physics;
+        Percent = (Total / 300) * 100;
+    }
+    public override string ToString()
+    {
+        return $"The Total is ={Total}\nPercent is ={Percent}";
+    }
+
 
 }
+
+//1.	Create class Employee. Add fields like id, name, basic salary, HRA, TA, PF. Accept the value of id, name & basic salary from constructor. Calculate the employee gross salary  & display employee details using ToString() method
+ //	HRA- 40% of basic salary
+ //TA – 20% of basic salary
+ //PF -12 % of basic salary
+
+    public class Employee_details
+{
+    private int id, bs;
+    private string name;
+    private double hra, gs, ta, pf;
+
+    public Employee_details(int id, string name, int bs)
+    {
+
+        this.id = id;
+        this.bs = bs;
+        this.name = name;
+    }
+    public void CalculateSal()
+    {
+
+        hra = bs * 0.40;
+
+        ta = bs * 0.20;
+
+        pf = bs * 0.12;
+
+        gs = (hra + ta + bs) - pf;
+
+    }
+    public string ToString()
+    {
+        return $"Name is {name}\nid is {id}\ngross salary is {gs}";
+    }
+}
+
+
+namespace DP4
+{	//Create class Product. Add fields like id, name and price.Create properties for each field. Use object initializer syntax initialize the object. Print product details using ToString()
+    internal class Product_details
+    {
+        private int id;
+        double price;
+        private string name;
+        private double dic_per1;
+        private double cost_pri;
+        private double sell_pri;
+        public double DiscountAmount { get; set; }
+        public int ID
+        {
+            set { id = value; }
+            get { return id; }
+        }
+        public string Name
+        {
+            set { name = value; }
+            get { return name; }
+        }
+        public double Price
+
+        {
+            set { price = value; }
+            get { return price; }
+        }
+        public double Cost
+        {
+            set { cost_pri = value; }
+            get { return cost_pri; }
+        }
+        public double DiscountPrecentage
+        {
+            set { dic_per1 = value; }
+            get { return dic_per1; }
+        }
+        public double Sell
+        {
+            set { sell_pri = value; }
+            get { return sell_pri; }
+        }
+        public void CalculateDis()
+        {
+            DiscountAmount = Price * DiscountPrecentage / 100;
+        }
+        public override string ToString()
+        {
+            return $"product id is {id}\nname is {name}\nprice is {price} discount is {DiscountAmount}";
+        }
+
+    }
+}
+
+namespace DP4
+{
+    internal class Product5
+    {
+        public int id;
+        public string name;
+        public double price;
+
+        public int Id { set; get; }
+        public string Name { set; get; }
+
+        public double Price { set; get; }
+
+        public string ToStringP()
+        {
+            return $"Product name  is {Name}\nProdct id is {Id}\nPrice is {Price}";
+        }
+    }
+}
+
+//namespace DP4
+//{
+//    public class Product_details1
+//    {
+//        private int id;
+//        double price;
+//        private string name;
+//        private double dic_per1, NewPrice, DiscountPrice;
+
+//        public int ID
+//        {
+//            set { id = value; }
+//            get { return id; }
+//        }
+//        public string Name
+//        {
+//            set { name = value; }
+//            get { return name; }
+//        }
+//        public double Price
+
+//        {
+//            set { price = value; }
+//            get { return price; }
+//        }
+
+//        public double dic_per
+//        {
+//            set { dic_per = value; }
+//            get { return dic_per; }
+//        }
+
+//        public void CalculateDis()
+
+//        {
+//            DiscountPrice = Price * (dic_per / 100);
+//            NewPrice = Price - DiscountPrice;
+//        }
+
+//        public string DisplayP()
+//        {
+//            return $"Price is {price},discounted price is {DiscountPrice}";
+//        }
+//        public override string ToString()
+
+//        {
+//            return $"product id is {ID}:name is {Name}:price is {Price}:discount price is {DiscountAmount}";
+//        }
+//    }
+//}
+
+//using static New_Assignment_practice.Student_Details;
+
+namespace DP4
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            Employee_details e1 = new Employee_details(123, "pankaj", 30000);
+            e1.CalculateSal();
+            Console.WriteLine(e1.ToString());
+
+            Product_details p1 = new Product_details() { ID = 123, Name = "pratik", Price = 20000 };
+            Console.WriteLine($"product details are {p1.ID}:{p1.Name}:{p1.Price}");
+
+            Product_details p2 = new Product_details();
+            p2.ID = 111;
+            p2.Name = "pankaj";
+            p2.Price = 30000;
+            p2.DiscountPrecentage = 20;
+            p2.CalculateDis();
+            Console.WriteLine(p2);
+
+
+            Student_Details s1 = new Student_Details(80, 70, 75);
+            s1.Roll_no = 123;
+            s1.Name = "pankaj";
+            s1.Percentage = 88;
+            Console.WriteLine(s1.PrintSD());
+
+            Student_Details s2 = new Student_Details(85, 93, 87);
+            s2.Calculate();
+            Console.WriteLine(s2);
+
+        }
+    }
+}
+
+//namespace DP4
+//{
+//    public class Array
+//    {
+//        static void Main(string[] args)
+//        {
+//            //syntax
+//            // set of integers
+//            int[] numbers = new int[10] { 78, 45, 12, 89, 23, 90, 11, 4, 8, 9 };
+//            int[] nos = new int[10] { 1, 2, 3, 4, 5, 0, 0, 0, 0, 0 };
+
+//            foreach (var item in numbers)
+//            {
+//                Console.WriteLine(item);
+//            }
+//            // sort
+
+//            Array.Sort (numbers);
+//            Console.WriteLine("------after sort------");
+//            foreach (var item in numbers)
+//            {
+//                Console.WriteLine(item);
+//            }
+//            Array.Reverse(numbers);
+//            Console.WriteLine("------after reverse------");
+//            foreach (var item in numbers)
+//            {
+//                Console.WriteLine(item);
+//            }
+
+//            Array.Copy(numbers, 3, nos, 5, 3);
+//            Console.WriteLine("------------------");
+//            foreach (var item in nos)
+//            {
+//                Console.WriteLine(item);
+//            }
+//        }
+
+
+//    }
+//}
+

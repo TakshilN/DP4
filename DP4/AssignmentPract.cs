@@ -1,5 +1,6 @@
 ﻿
 
+using System.Runtime.CompilerServices;
 using System.Runtime.Intrinsics.Arm;
 
 namespace DP4
@@ -663,7 +664,7 @@ namespace DP4
         }
     }
 
-    class Program
+    class Program1
     {
         static void Main(string[] args)
         {
@@ -707,5 +708,202 @@ class Poli
         {
             Console.WriteLine ("is not Palindrome");
         }
+    }
+}
+
+namespace DP4
+{
+    public class Array5
+    {
+        static void Main(string[] args)
+        {
+            //syntax
+            // set of integers
+            int[] numbers = new int[10];// 10 size (want to store 10 element)
+            numbers[0] = 1;
+            numbers[1] = 2;
+
+            numbers[9] = 10;
+
+            // or
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                numbers[i] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            // or
+
+            int[] no1 = new int[10] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            // or
+            int[] no2 = new int[] { 1, 2, 3, 4, 5 };
+            // or
+
+            int[] no3 = { 11, 22, 33, 44, 55 };
+
+            string[] names = { "Amol", "Rahul", "Rohan", "Suraj" };
+
+            double[] percentage = { 66.77, 77.88, 99.66, 55.66 };
+
+        }
+
+    }
+}
+
+public class Array6
+{
+
+    static void Main(string[] args)
+    {
+        //syntax
+        // set of integers
+        int[] numbers = new int[10];// 10 size (want to store 10 element)
+
+
+        for (int i = 0; i < numbers.Length; i++)
+        {
+            numbers[i] = Convert.ToInt32(Console.ReadLine());
+        }
+
+
+        for (int i = numbers.Length - 1; i >= 0; i--)
+        {
+            numbers[9] = 100;
+            Console.WriteLine($"numbers[{i}]={numbers[i]}");
+        }
+
+        // using foreach loop
+
+        foreach (var item in numbers)
+        {
+            Console.WriteLine(item);
+        }
+
+        string[] names = { "suraj", "rohan", "amol" };
+
+        foreach (string nm in names)
+        {
+            Console.WriteLine(nm);
+        }
+    }
+
+}
+
+public class Array7
+{
+
+    static void Main(string[] args)
+    {
+        //syntax
+        // set of integers
+        int[] numbers = new int[10] { 78, 45, 12, 89, 23, 90, 11, 4, 8, 9 };
+        int[] nos = new int[10] { 1, 2, 3, 4, 5, 0, 0, 0, 0, 0 };
+
+        foreach (var item in numbers)
+        {
+            Console.WriteLine(item);
+        }
+        // sort
+
+        Array.Sort(numbers);
+        Console.WriteLine("------after sort------");
+        foreach (var item in numbers)
+        {
+            Console.WriteLine(item);
+        }
+        Array.Reverse(numbers);
+        Console.WriteLine("------after reverse------");
+        foreach (var item in numbers)
+        {
+            Console.WriteLine(item);
+        }
+
+        Array.Copy(numbers, 3, nos, 5, 3);
+        Console.WriteLine("------------------");
+        foreach (var item in nos)
+        {
+            Console.WriteLine(item);
+        }
+    }
+
+}
+
+
+public class maxnum
+{
+    static void Main(string[] args)
+    {
+        int[] arr = new int[5] { 5, 6, 2, 3, 4 };
+        int[] arr2 = new int[5] { 20, 2, 10, 63, 10 };
+
+        int maxvalue = 0; //Establishes variables for maximum value and the counter of maximum value
+        int maxvalue2 = 0;
+
+        maxvalue2 = arr2[0];
+        maxvalue = arr[0];// assume  5
+
+        for (int i = 0; i < arr.Length; i++)
+        {
+            for (int j = 0; j < arr.Length; j++)
+            {
+                if (arr[i] > maxvalue)
+                {
+                    maxvalue = arr[i];
+                }
+                if (arr[j] > maxvalue2)
+                {
+                    maxvalue = arr[j];
+                }
+            }
+        }
+        Console.WriteLine(maxvalue2);
+        Console.WriteLine(maxvalue); // Prints the final outcome.
+    }
+}
+
+public class RevNUm
+{
+    static void Main(string[] args)
+    {
+        int rem, rev = 0;
+        int num = Convert.ToInt32(Console.ReadLine());
+
+        while (num != 0)
+        {
+            rem = num % 10;
+            rev = rev * 10 + rem;
+            num = num / 10;
+        }
+        Console.WriteLine(rev);
+    }
+}
+
+public class solution
+{
+    static void Main(string[] args)
+    {
+     
+        int[] arr = new int[5] {5, 4, 3, 2, 6};
+        int i, max, n;
+        n = 5;
+        max = arr[0];
+       
+        for (i = 1; i < n; i++)
+        {
+            if (arr[i] > max)
+            {
+                max = arr[i];
+            }
+        }
+        Console.WriteLine(max);
+    }
+}
+
+public class Solution
+{
+    static void Main(string[] args)
+    {
+        int[] input = {3, 4, 2, 6,};
+        Console.WriteLine(input.Max());
     }
 }
